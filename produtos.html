@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/estilobackup.css">
+		<link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand:300" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/estiloProdutos.css">
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/gallery.js"></script>
+
+</head>
+<body id="intercaceProdutos">
+    <div id="carrinho">
+      <h4>itens selecionados: <span id="count">0</span> </h4>
+    </div>
+	<nav id= "menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="#"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDY2LjQ1OSA2Ni40NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjYuNDU5IDY2LjQ2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTY1LjU0MiwxMS43NzdMMzMuNDY3LDAuMDM3Yy0wLjEzMy0wLjA0OS0wLjI4My0wLjA0OS0wLjQyLDBMMC45MTYsMTEuNzQ4Yy0wLjI0MiwwLjA4OC0wLjQwMiwwLjMyLTAuNDAyLDAuNTc2ICAgbDAuMDksNDAuNDg0YzAsMC4yNSwwLjE1MiwwLjQ3NSwwLjM4NSwwLjU2NmwzMS4wNDcsMTIuMzk5djAuMDcyYzAsMC4yMDMsMC4xMDIsMC4zOTMsMC4yNywwLjUwOCAgIGMwLjE2OCwwLjExMSwwLjM3OSwwLjEzNSwwLjU3LDAuMDYybDAuMzg1LTAuMTU0bDAuMzg1LDAuMTU0YzAuMDcyLDAuMDI4LDAuMTUsMC4wNDUsMC4yMjcsMC4wNDVjMC4xMjEsMCwwLjI0LTAuMDM3LDAuMzQ0LTAuMTA1ICAgYzAuMTY4LTAuMTE1LDAuMjctMC4zMDUsMC4yNy0wLjUwOHYtMC4wNzJsMzEuMDQ3LTEyLjM5OWMwLjIzMi0wLjA5MywwLjM4NS0wLjMxNiwwLjM4NS0wLjU2OGwwLjAyNy00MC40NTMgICBDNjUuOTQzLDEyLjA5NSw2NS43ODQsMTEuODY3LDY1LjU0MiwxMS43Nzd6IE0zMi4wMzUsNjMuMTM0TDMuMDUyLDUxLjU2MlYxNS4wMTNsMjguOTgyLDExLjU3MkwzMi4wMzUsNjMuMTM0TDMyLjAzNSw2My4xMzR6ICAgIE0zMy4yNTksMjQuNDM5TDQuNzgzLDEzLjA2NmwyOC40OC0xMC40OThsMjguNzM1LDEwLjM5NEwzMy4yNTksMjQuNDM5eiBNNjMuNDY1LDUxLjU2MkwzNC40ODQsNjMuMTM0VjI2LjU4NWwyOC45ODEtMTEuNTcyICAgVjUxLjU2MnogTTE0LjQ3OCwzOC4wMjFjMC0xLjY5MiwxLjM1LTIuNTI4LDMuMDE2LTEuODY3YzEuNjY1LDAuNjYzLDMuMDE2LDIuNTczLDMuMDE2LDQuMjY5ICAgYy0wLjAwMSwxLjY5Mi0xLjM1MSwyLjUyOS0zLjAxNywxLjg2N0MxNS44MjcsNDEuNjI2LDE0LjQ3NywzOS43MTQsMTQuNDc4LDM4LjAyMXogTTUuOTk4LDI1LjM3NWMwLTEuNjkzLDEuMzUxLTIuNTI5LDMuMDE3LTEuODY2ICAgYzEuNjY2LDAuNjYyLDMuMDE2LDIuNTcyLDMuMDE2LDQuMjY3YzAsMS42OTUtMS4zNTEsMi41MjktMy4wMTcsMS44NjdDNy4zNDcsMjguOTc5LDUuOTk4LDI3LjA2OSw1Ljk5OCwyNS4zNzV6IE0yMi45NTksMzIuMTI0ICAgYzAtMS42OTQsMS4zNTEtMi41MywzLjAxNy0xLjg2N2MxLjY2NiwwLjY2MywzLjAxNiwyLjU3MywzLjAxNiw0LjI2N2MwLDEuNjk1LTEuMzUyLDIuNTMtMy4wMTcsMS44NjcgICBDMjQuMzA5LDM1LjcyOCwyMi45NTksMzMuODE4LDIyLjk1OSwzMi4xMjR6IE01Ljk5NSw0My4xMDNjMC4wMDEtMS42OTIsMS4zNTEtMi41MjksMy4wMTctMS44NjcgICBjMS42NjYsMC42NjQsMy4wMTYsMi41NzMsMy4wMTYsNC4yNjljMCwxLjY5NC0xLjM1MSwyLjUzLTMuMDE3LDEuODY3QzcuMzQ0LDQ2LjcwOSw1Ljk5NSw0NC43OTcsNS45OTUsNDMuMTAzeiBNMjIuOTU3LDQ5Ljg1MyAgIGMwLjAwMS0xLjY5NSwxLjM1MS0yLjUyOSwzLjAxNy0xLjg2N3MzLjAxNiwyLjU3MiwzLjAxNiw0LjI2OWMwLDEuNjkyLTEuMzUxLDIuNTI4LTMuMDE3LDEuODY2ICAgQzI0LjMwNiw1My40NTgsMjIuOTU3LDUxLjU0NiwyMi45NTcsNDkuODUzeiBNMjcuODEsMTIuNzExYy0wLjc2NiwxLjIyOC0zLjIwOSwyLjA4Ny01LjQ2MiwxLjkxNyAgIGMtMi4yNTMtMC4xNjktMy40Ni0xLjMwMS0yLjY5NS0yLjUyOGMwLjc2NS0xLjIyNywzLjIwNy0yLjA4NSw1LjQ2MS0xLjkxNkMyNy4zNjUsMTAuMzUyLDI4LjU3MywxMS40ODQsMjcuODEsMTIuNzExeiAgICBNNDMuOTI4LDEzLjkyMWMtMC43NjQsMS4yMjktMy4yMDgsMi4wODYtNS40NiwxLjkxN2MtMi4yNTUtMC4xNjktMy40Ni0xLjMwMi0yLjY5Ni0yLjUyOGMwLjc2NC0xLjIyOSwzLjIwOS0yLjA4Niw1LjQ2Mi0xLjkxOCAgIEM0My40ODUsMTEuNTYzLDQ0LjY5MywxMi42OTUsNDMuOTI4LDEzLjkyMXogTTQ3LjA0LDQyLjMyOGMtMS4wNDEtMS4yNzgtMC43NjQtMy43MDUsMC42MTktNS40MjEgICBjMS4zODEtMS43MTYsMy4zNDQtMi4wNjksNC4zODEtMC43OTJjMS4wNDEsMS4yNzYsMC43NjQsMy43MDQtMC42MTcsNS40MlM0OC4wNzksNDMuNjA0LDQ3LjA0LDQyLjMyOHoiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" id="imgd20"> </a>
+        </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="normal"><a href="home.html">Página Inicial</a></li>
+          <li class="normal"><a href="produtos.html">Produtos</a></li>
+          <li class="normal"><a href="contato.html">Contato</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="outro"><a href="imagens/telazul.jpg"> <span class="glyphicon glyphicon-user"> Login <span class="fa fa-user-plus"></span></a></li>
+          <li class="outro"><a href="imagens/telazul.jpg"><span class="glyphicon glyphicon-log-in"> Cadastre-se <span class="fa fa-user"> </span></a></li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+    
+ 		<div onmouseover="over(this)" onmouseout="out(this)"  class="produtos" id="first" data-toggle="modal" data-target="#item1">
+ 			<figure><div class="imgP" id="img1"><div class="filtro"></div></div></figure>
+ 			<h3>Dungeons and Dragons</h3>
+ 			<p>Dungeons & Dragons (abreviado como D&D ou DnD) é um RPG de fantasia medieval desenvolvido originalmente por Gary Gygax e Dave Arneson, e publicado pela primeira vez em 1974 nos Estados Unidos pela TSR, Inc., empresa de Gary Gygax. Hoje o jogo é publicado pela Wizards of the Coast. Suas origens são os wargames de miniaturas (principalmente o Chainmail). A publicação do D&D é considerada como a origem dos RPGs modernos e foi lançada no Brasil pela Grow e em Portugal pela Sociedade Tipográfica h</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+ 		</div>
+ 		<div onmouseover="over(this)" onmouseout="out(this)" class="produtos" data-toggle="modal" data-target="#item2" >
+ 			<figure><div class="imgP" id="img2"><div class="filtro"></div></div></figure>
+ 			<h3>War</h3>
+ 			<p>War (baseado no jogo americano Risk) é um jogo de tabuleiro, lançado no Brasil pela Grow em 1972[4].
+
+O jogo ocupa a 5721ª posição no ranking do site Board Game Geek dos melhores jogos de tabuleiro[</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+ 			
+ 		</div>
+ 		<div onmouseover="over(this)" onmouseout="out(this)" class="produtos" data-toggle="modal" data-target="#item3">
+ 			<figure><div class="imgP" id="img3"><div class="filtro"></div></div></figure>
+ 			<h3>Game Of Thrones</h3>
+ 			<p>O Risk de Game of Thrones possui dois tabuleiros diferentes: Um onde jogamos uma “Guerra dos Cinco Reis” (isso mesmo) com as famílias Martell, Stark, Lannister, Baratheon, e Tyrell (campanha para 3-5 jogadores). No outro o objetivo é dominar e lutar contra os senhores de escravos em Essos, sendo você e Família Targaryen ou o Povo Ghiscari (campanha para 2 jogadores). Unindo os dois mapas é possível jogas até 7 pessoas, cada uma representando das grandes casas/povos.
+
+Leia mais: http://www.gameofthronesbr.com/2015/07/jogos-war-de-game-of-thrones-ja-esta-em-pre-venda.html#ixzz4lgQ6P3Dq 
+Under Creative Commons License: Attribution</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+
+ 		</div>
+ 		<div  onmouseover="over(this)" onmouseout="out(this)" id ="fourth"class="produtos" data-toggle="modal" data-target="#item4" >
+ 			<figure><div class="imgP" id="img4"><div class="filtro"></div> </div></figure>
+ 			<h3>Yu-Gi-Oh!</h3>
+ 			<p>Yu-Gi-Oh! é uma série de mangá sobre jogo escrita e ilustrada por Kazuki Takahashi. A série foi originalmente publicada pela editora Shueisha na revista Weekly Shōnen Jump entre 1996 e 2004.[3][4] A trama segue a história de um menino chamado Yugi Muto, que remonta o antigo Enigma do Milênio, e desperta um espiríto dentro de seu corpo com a personalidade de um jogador e que resolve seus conflitos usando vários jogos. Duas adaptações em anime do mangá original foram produzidas: uma pela Toei Animation com o mesmo nome, que foi ao ar de 4 de abril de 1998 a 10 de outubro de 1998, com 27 episódios; e outra produzida pela Nihon Ad Systems e animada pelo Studio Gallop intitulada Yu-Gi-Oh! Duel Monsters, que foi ao ar entre abril de 2000 e setembro de 2004, com 224 episódios. O segundo anime expandiu uma franquia que inclui vários animes spin-offs, Trading Card Game e diversos vídeo games. A maioria das incarnações da franquias envolvem o jogo de cartas fictício chamado Duel Monsters (Monstros de Duelo) onde cada jogador usa cartas para um "duelo" entre si, em uma batalha simulada de duelo de "monstros". O Yu-Gi-Oh! Trading Card Game é a contraparte do mundo real para este jogo ficcional em que é livremente baseado. No Brasil, o mangá de Yu-Gi-Oh! foi publicado pela editora JBC entre 2006 e 2010</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+
+ 		</div>
+ 		<div onmouseover="over(this)" onmouseout="out(this)"  class="produtos" data-toggle="modal" data-target="#item5">
+ 			<figure><div class="imgP" id="img5"><div class="filtro"></div></div></figure>
+ 			<h3>Magic The Gathering</h3>
+ 			<p>Magic: the Gathering, M:TG, MTG ou simplesmente Magic, é um jogo de cartas colecionáveis (TCG, Trading Card Game) criado por Richard Garfield, no qual os jogadores utilizam um baralho de cartas construído de acordo com o seu modo individual de jogo para tentar vencer o baralho adversário. Em 2003, na comemoração do aniversário de 10 anos de lançamento do Magic, a revista "GAMES" selecionou-o para o seu Hall da Fama[1]. Criado em 1993, Magic foi o primeiro TCG produzido e continuado até hoje, quando conta com aproximadamente 12 milhões de jogadores ao redor do mundo<</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+
+ 		</div>
+ 		<div id="six" onmouseover="over(this)" onmouseout="out(this)" data-toggle="modal" data-target="#item6" class="produtos">
+ 			<figure><div class="imgP" id="img6"><div class="filtro"></div></div></figure>
+ 			<h3>Munchkin</h3>
+ 			<p>Entre na Dungeon e explore seus mistérios! Abra portas secretas e mate todos os monstros que cruzarem seu caminho. Trapaceie seus colegas. Pegue todo o tesouro para voce e saia correndo. Seja sincero: Você adora isso! 
+
+Este jogo contém a essência da Experiência Dungeon... sem toda a complexidade do RPG. Tudo que você precisa é juntar alguns amigos, matar uns monstros e pegar seus valiosos tesouros. Itens poderosíssimos como uma 'Bandana de Machão' ou as famosas 'Joelheiras da Sedução'. Calce as 'Botas de Chutar a Bunda' ou talvez use sua 'Serra Elétrica de Mutilação Sangrenta'. 
+
+Dê início à sua saga massacrando 'Rãs Voadoras' ou um 'Troll da Internet', para quem sabe um dia ter o prazer de matar o temível 'Dragão de Plutônio'. 
+
+Rápido e leve, Munchkin vai levar qualquer grupo de jogadores de RPG à loucura! E, enquanto todos estiverem rindo, você pode roubar suas coisas.</p>
+ 			<img class="rodape" src="imagens/oroboros.png">
+
+ 		</div>
+ 		<footer id="pehome">                 
+				 <a href="">Facebook </a> | <a href=""> Twitter </a>
+				 <p>Site criado por Ailson Alexandre e Carlos Eduardo. Todos os direitos não reservados.</p>
+			</footer>  
+		<div id="item1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Dungeons and Dragon</h4>
+      </div>
+      <div class="modal-body">
+        <div class="bImg">
+           <img class="mySlides" src="imagens/d1.jpg">
+           <p>Dungeons & Dragons (abreviado como D&D ou DnD) é um RPG de fantasia medieval desenvolvido originalmente por Gary Gygax e Dave Arneson, e publicado pela primeira vez em 1974 nos Estados Unidos pela TSR, Inc., empresa de Gary Gygax. Hoje o jogo é publicado pela Wizards of the Coast. Suas origens são os wargames de miniaturas (principalmente o Chainmail). A publicação do D&D é considerada como a origem dos RPGs modernos e foi lançada no Brasil pela Grow e em Portugal pela Sociedade Tipográfica S.A[1].
+
+          Jogadores de D&D criam personagens que embarcam em aventuras imaginárias em que eles enfrentam monstros, reúnem tesouros, interagem entre si e ganham pontos de experiência para se tornarem incrivelmente poderosos à medida que o jogo avança. O D&D se destaca dos wargames tradicionais por permitir que cada jogador controle um personagem específico, ao invés de um exército. Miniaturas ou marcadores em um tabuleiro quadriculado são usados ocasionalmente para representar esses personagens. O D&D também apresentou o conceito de Mestre de Jogo (Dungeon Master ou DM, no original), que atua como juiz e narrador e é responsável por manter o cenário ficcional do jogo e aplicar as regras a cada situação descrita.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="selecionado(0)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+          <button onclick="desselecionado(0)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div id="item2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">War</h4>
+      </div>
+      <div class="modal-body">
+        <div class="bImg">
+           <img class="mySlides" src="imagens/war1.jpg">
+        </div>
+        <p>O jogo "La Conquite deu Monde" ("A Conquista do Mundo") foi criado na França em 1957, e popularizado após a norte-americana Parker Brothers lançá-lo com o nome de Risk dois anos depois.[6] No princípio da década de 1970, o paulistano Gerald Reiss conheceu o Risk na Europa, e sugeriu a seus colegas da Escola Politécnica de São Paulo que decidissem criar uma versão, visto que no Brasil não existiam jogos de tabuleiro para adultos. Nascia em 1972 a Grow, que faturou 5 mil unidades de seu jogo, batizado War, e o distribuiu de porta em porta para lojas de brinquedos. A tiragem inicial se esgotou rapidamente.[7] Desde 1972, mais de 12 milhões de dados foram manufaturados pela Grow para o War.[8]
+
+Com a decisão da Hasbro de participar diretamente do mercado brasileiro, um acordo com a Grow permitiu que ambas as empresas lançassem jogos parecidos: O War continuou sendo fabricado pela Grow, enquanto a Hasbro lançou o Risco (Risk).[9]</p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="selecionado(1)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+          <button onclick="desselecionado(1)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div id="item3" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Game of Thrones</h4>
+      </div>
+      <div class="modal-body">
+        <div class="bImg">
+           <img class="mySlides" src="imagens/got1.jpg">
+           <p>DGame of Thrones (Game of Thrones no Brasil e A Guerra dos Tronos em Portugal) é uma série de televisão norte-americana criada por David Benioff e D. B. Weiss, e baseada na série de livros A Song of Ice and Fire, de George R. R. Martin.[1] Game of Thrones é gravado no Canadá, na Croácia, na Islândia, na Malta, em Marrocos, na Espanha, no Reino Unido, nos Estados Unidos e na República da Irlanda.
+
+           A primeira temporada da série estreou em 17 de abril de 2011. Até agora, 6 temporadas já foram exibidas, com a sétima temporada programada para estrear em 16 de julho de 2017.[2] Segundo a HBO, a oitava temporada será a última.[3]
+
+          Muito aguardada desde seus primeiros estágios de desenvolvimento, Game of Thrones foi muito bem recebida pela crítica especializada. Sua primeira temporada foi indicada em vários prêmios, incluindo o Emmy do Primetime de melhor série de drama e o Globo de Ouro de melhor série dramática; Peter Dinklage, que interpreta Tyrion Lannister, venceu o Emmy do Primetime de melhor ator coadjuvante em série dramática e o Globo de Ouro de melhor ator coadjuvante em cinema. A série também conquistou o Emmy de melhor projeto de créditos principais, e possui uma das melhores notas entre os telespectadores para séries em exibição no site IMDb. Game of Thrones ganhou 38 Emmys, mais do que qualquer outra série de televisão.
+
+          A série entrou para o Livro de Recordes como a série de drama com a maior transmissão simultânea ao redor do mundo. O número foi alcançado graças ao episódio 2 da quinta temporada, intitulado "The House of Black and White".[4] Na sexta temporada da série, a emissora HBO decidiu produzir um talk show para Game of Thrones, chamado After the Thrones, assim como a emissora AMC fez com a série Breaking Bad, produzindo um talk show chamado Talking Bad. Com o mesmo formato de Thronecast e Talking Dead, o programa After the Thrones apresenta recapitulações, comentários e teorias de Game of Thrones e é exibido nas segundas-feiras pela HBO Now, HBO Go, HBO on Demand e pela própria emissora HBO.[5][6].</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="selecionado(2)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+        <button onclick="desselecionado(2)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div id="item4" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Yu-Gi-Oh!</h4>
+      </div>
+      <div class="modal-body">
+          <div class="bImg">
+           <img class="mySlides" src="imagens/yu1.jpg">
+           <p>Yu-Gi-Oh! (遊☆戯☆王, Yū☆gi☆ō?, rei dos jogos) é uma série de mangá sobre jogo escrita e ilustrada por Kazuki Takahashi. A série foi originalmente publicada pela editora Shueisha na revista Weekly Shōnen Jump entre 1996 e 2004.[3][4] A trama segue a história de um menino chamado Yugi Muto, que remonta o antigo Enigma do Milênio, e desperta um espiríto dentro de seu corpo com a personalidade de um jogador e que resolve seus conflitos usando vários jogos.
+
+            Duas adaptações em anime do mangá original foram produzidas: uma pela Toei Animation com o mesmo nome, que foi ao ar de 4 de abril de 1998 a 10 de outubro de 1998, com 27 episódios; e outra produzida pela Nihon Ad Systems e animada pelo Studio Gallop intitulada Yu-Gi-Oh! Duel Monsters, que foi ao ar entre abril de 2000 e setembro de 2004, com 224 episódios. O segundo anime expandiu uma franquia que inclui vários animes spin-offs, Trading Card Game e diversos vídeo games.
+
+            A maioria das incarnações da franquias envolvem o jogo de cartas fictício chamado Duel Monsters (Monstros de Duelo) onde cada jogador usa cartas para um "duelo" entre si, em uma batalha simulada de duelo de "monstros". O Yu-Gi-Oh! Trading Card Game é a contraparte do mundo real para este jogo ficcional em que é livremente baseado.
+
+            No Brasil, o mangá de Yu-Gi-Oh! foi publicado pela editora JBC entre 2006 e 2010</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="selecionado(3)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+        <button onclick="desselecionado(3)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div id="item5" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Magic The gathering</h4>
+      </div>
+      <div class="modal-body">
+          <div class="bImg">
+           <img class="mySlides" src="imagens/magic1.jpg">
+           <p>Magic é um jogo de cartas de estratégia baseado em turnos, ou seja, cada jogador tem sua vez e ao passar o outro jogador tem sua vez e assim sucessivamente. Cada jogador deve ter um deck (baralho) com qualquer número de cartas (mínimo 60 cartas, especialistas aconselham 60 cartas exatamente) e 20 pontos de vida (40 no formato Commander ou EDH).
+
+            O objetivo é derrotar o oponente, para isso existem 5 ocasiões (uma específica para o formato Commander ou EDH) em que se pode declarar um jogador derrotado:
+
+            1. Quando os pontos de vida do jogador chegar a 0.
+            2. Quando um jogador for comprar uma carta, e não tiver mais cartas em seu deck (Deck-Over).
+            3. Quando um efeito de uma carta disser que um jogador ganha o jogo, ou que o jogador perde o jogo.
+            4. Quando um jogador tiver 10 ou mais marcadores de veneno.
+            5. Quando um jogador tiver 21 pontos de dano de um único comandante.</p>
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button onclick="selecionado(4)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+        <button onclick="desselecionado(4)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<div id="item6" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Munchkin</h4>
+      </div>
+      <div class="modal-body">
+          <div class="bImg">
+           <img class="mySlides" src="imagens/munch1.jpg">
+           <p>Entre na Dungeon e explore seus mistérios! Abra portas secretas e mate todos os monstros que cruzarem seu caminho. Trapaceie seus colegas. Pegue todo o tesouro para voce e saia correndo. Seja sincero: Você adora isso! 
+
+Este jogo contém a essência da Experiência Dungeon... sem toda a complexidade do RPG. Tudo que você precisa é juntar alguns amigos, matar uns monstros e pegar seus valiosos tesouros. Itens poderosíssimos como uma 'Bandana de Machão' ou as famosas 'Joelheiras da Sedução'. Calce as 'Botas de Chutar a Bunda' ou talvez use sua 'Serra Elétrica de Mutilação Sangrenta'. 
+
+Dê início à sua saga massacrando 'Rãs Voadoras' ou um 'Troll da Internet', para quem sabe um dia ter o prazer de matar o temível 'Dragão de Plutônio'. 
+
+Rápido e leve, Munchkin vai levar qualquer grupo de jogadores de RPG à loucura! E, enquanto todos estiverem rindo, você pode roubar suas coisas.</p>
+        </div>  
+      </div>
+      <div class="modal-footer">
+          <button onclick="selecionado(5)" type="button" class="selecionar btn btn-success"  data-dismiss="modal">Selecionar</button>
+          <button onclick="desselecionado(5)" type="button" class="btn btn-danger" data-dismiss="modal">Desfazer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

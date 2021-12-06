@@ -1,0 +1,83 @@
+@font-face{
+	font-family: 'wizard';
+	src: url("../fontes/dukepluke.ttf");
+}
+body{
+	background-image: url("http://www.webdesignburn.com/wp-content/uploads/2015/04/Grey-Texture-Background-and-Wallpaper-12.jpg")
+}
+#first{
+	margin-top: 5%;
+}
+.imgP{
+	padding: 0px;
+}
+.produtos{
+	background-color: rgb(118, 102, 91);
+	display: inline-block;
+	width: 350px;
+	height: 450px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 5%;
+	margin-right: auto;
+	border-radius: 20px;
+	box-shadow: 0px 0px 10px black;
+	cursor: pointer;
+}
+.produtos figure{
+	overflow: hidden;
+	  border-bottom-left-radius: 25% 100%;
+  border-bottom-right-radius: 25% 100%;
+  border-top-left-radius: 30% 100%;
+  border-top-right-radius: 30% 100%;
+	background-color: black;
+	height: 60%;
+}
+.imgP{
+	max-width: 100%;
+	max-height: 100%;
+}
+.imgP:hover{
+}
+.produtos h3{
+	font-family: 'wizard';
+	margin-top: 0px;
+	margin-left: auto; 
+	margin-right: auto;
+	font-size: 25pt;
+	width: 100%;
+	border-top: 2px solid white;
+	border-bottom: 2px solid white;
+	background-color: black;
+	border-bottom: none;
+	text-align: center;
+}
+.produtos p{
+	padding: 9px;
+	background-color: rgb(159, 142, 126);
+	overflow: hidden;
+	height: 75px;
+	border-top: 2px solid white;
+	text-align: justify;
+	margin-top: -10px; 
+
+}
+.rodape{
+	margin-left: 42%;
+	height: 12%;
+}
+
+.produtos:hover{
+	border: 2px solid black;
+	box-shadow: 0px 0px 50px rgb(225, 155, 0);
+}
+@media (max-width: 500px){
+	.produtos{
+		width: 90%;
+		margin-left: 5%;
+		margin-right: auto;
+	}
+}
+.modal-body{
+	
+}
